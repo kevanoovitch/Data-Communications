@@ -25,7 +25,7 @@ while True:
     try:
         while True:
             # read client's message and remember client's address (IP and port)
-            message = serverSocket.recvfrom(2048)
+            message = serverSocket.recv(2048)
             if not message:
                 break  # if not message is received close the connection
 
@@ -54,7 +54,7 @@ while True:
             # Print Result of data transfer
             if len(ErrorLog) == 0:
                 print("no errors")
-                connectionSocket.sendto("ok".encode())
+                connectionSocket.send("ok".encode())
             else:
                 print("erros found!")
 
