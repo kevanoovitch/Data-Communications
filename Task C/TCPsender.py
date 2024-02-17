@@ -48,7 +48,7 @@ duration = 100  # Seconds
 
 
 # serverName = 'hostname'
-serverName = "localhost"
+serverName = "192.168.1.2"
 
 serverPort = 12000
 
@@ -122,8 +122,6 @@ for packet in PacketsList:
     MessagesSent += 1
 
     time.sleep(interval)  # Takes a "paus" between the msg being sent
-
-
 
 
 # close TCP socket

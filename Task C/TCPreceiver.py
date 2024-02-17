@@ -6,7 +6,7 @@ serverPort = 12000
 
 # creates TCP socket and bind to specified port
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(('localhost', serverPort))
+serverSocket.bind(('', serverPort))
 
 
 # Listen of incomming conenctions
@@ -32,9 +32,8 @@ while True:
             break  # if not message is received close the connection
 
         # Check Message ID
-        
+
         MessageID = int(message.decode()[:5])
-    
 
         # Error checking
         if ReceievedMSG:  # List is not empty
@@ -56,7 +55,7 @@ while True:
         # Print Result of data transfer
         if len(ErrorLog) == 0:
             print("no errors")
-            #connectionSocket.send("ok".encode())
+            # connectionSocket.send("ok".encode())
         else:
             print("erros found!")
 
@@ -66,7 +65,7 @@ while True:
             print("<--- All MessageIDs in received order -- >")
             for MessageID in ReceievedMSG:
                 print(f"{MessageID}\n")
-            
+
             connectionSocket.close()
             break
     except:
