@@ -25,7 +25,7 @@ while True:
     try:
         while True:
             # read client's message and remember client's address (IP and port)
-            message = serverSocket.recv(2048)
+            message = connectionSocket.recv(2048)
             if not message:
                 break  # if not message is received close the connection
 
