@@ -19,9 +19,9 @@ while True:
     message, clientAddress = serverSocket.recvfrom(2048)
 
     # Check Message ID
-    nrOfMsg = 0
+   
     MessageID = int(message.decode()[:5])
-    nrOfMsg += 1
+    
 
 
 # Error checking
@@ -29,11 +29,11 @@ while True:
         lastMessage = ReceievedMSG[-1]
         # If current message ID is smaller than previous
         if MessageID < lastMessage:
-            error = f"{MessageID} was smaller than previous ({ReceievedMSG[nrOfMsg -1 ]})"
+            error = f"{MessageID} was smaller than previous ({ReceievedMSG[-1]})"
             ErrorLog.append(error)
         # If current message is bigger than expected
-        if MessageID > ReceievedMSG[nrOfMsg - 1] + 1:
-            error = f"{MessageID} was bigger than expected ({ReceievedMSG[nrOfMsg -1 ]})"
+        if MessageID > ReceievedMSG[-1] + 1:
+            error = f"{MessageID} was bigger than expected ({ReceievedMSG[-1 ]})"
 
     # Print message and client address
     print(message.decode())
@@ -44,7 +44,7 @@ while True:
     # Print Result of data transfer
     if len(ErrorLog) == 0:
         print("no errors")
-        serverSocket.sendto("ok".encode(), clientAddress)
+        
     else:
         print("erros found!")
 

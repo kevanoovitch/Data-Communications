@@ -117,7 +117,7 @@ for packet in PacketsList:
         MessageID += 1
     MessagesSent += 1
 
-    # time.sleep(interval)  # Takes a "paus" between the msg being sent
+    time.sleep(interval)  # Takes a "paus" between the msg being sent
 
 
 response, serverAddress = sock.recvfrom(2048)
@@ -128,6 +128,3 @@ print("Received from server: ", response.decode())
 # close UDP socket
 sock.close()
 
-# Current problems
-# Sends everything longer than 20 second
-# Sends everythin as fast as possible not 40 / second (may be not a problem)

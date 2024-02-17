@@ -48,7 +48,7 @@ duration = 100  # Seconds
 
 
 # serverName = 'hostname'
-serverName = "192.168.1.2"
+serverName = "localhost"
 
 serverPort = 12000
 
@@ -124,10 +124,7 @@ for packet in PacketsList:
     time.sleep(interval)  # Takes a "paus" between the msg being sent
 
 
-response, serverAddress = sock.recv(2048)
 
-# output modified sentence and close the socket, cast message to string
-print("Received from server: ", response.decode())
 
 # close TCP socket
 sock.close()
