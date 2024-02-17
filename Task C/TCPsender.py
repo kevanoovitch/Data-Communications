@@ -1,4 +1,4 @@
-# UDP Sender
+# TCP Sender
 
 
 from socket import *
@@ -52,8 +52,11 @@ serverName = "192.168.1.2"
 
 serverPort = 12000
 
-# create UDP socket
-sock = socket(AF_INET, SOCK_DGRAM)
+# create TCP socket
+sock = socket(AF_INET, SOCK_STREAM)
+
+# Connect to TCP server
+sock.connect((serverName, serverPort))
 
 # read from file
 f = open("UDPStream.txt", "rb")
@@ -110,17 +113,17 @@ for packet in PacketsList:
         break
 
     DataPayload = str(MessageID) + str(packet) + "####"
-    sock.sendto(DataPayload.encode(), (serverName, serverPort))
+    sock.send(DataPayload.encode(), (serverName, serverPort))
     if (fakeMode == True):
         MessageID = 10000 + random.randint(1, len(PacketsList))
     else:
         MessageID += 1
     MessagesSent += 1
 
-    # time.sleep(interval)  # Takes a "paus" between the msg being sent
+    time.sleep(interval)  # Takes a "paus" between the msg being sent
 
 
-response, serverAddress = sock.recvfrom(2048)
+response, serverAddress = sock.recv(2048)
 
 # output modified sentence and close the socket, cast message to string
 print("Received from server: ", response.decode())
