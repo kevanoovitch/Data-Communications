@@ -6,7 +6,7 @@ serverPort = 12000
 
 # create UDP socket and bind to specified port
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(('', serverPort))
+serverSocket.bind(('192.168.1.2', serverPort))
 
 
 # Listen of incomming conenctions

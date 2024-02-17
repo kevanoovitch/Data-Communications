@@ -57,6 +57,7 @@ sock = socket(AF_INET, SOCK_STREAM)
 
 # Connect to TCP server
 sock.connect((serverName, serverPort))
+print("Connection established")
 
 # read from file
 f = open("UDPStream.txt", "rb")
@@ -113,7 +114,7 @@ for packet in PacketsList:
         break
 
     DataPayload = str(MessageID) + str(packet) + "####"
-    sock.send(DataPayload.encode(), (serverName, serverPort))
+    sock.send(DataPayload.encode())
     if (fakeMode == True):
         MessageID = 10000 + random.randint(1, len(PacketsList))
     else:
